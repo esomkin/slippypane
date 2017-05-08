@@ -1,0 +1,6 @@
+({
+	baseUrl: "",
+	cssIn: "../src/slippypane/0.2.0/css/slippypane.css",
+	out: "slippypane.min.css",
+	optimizeCss: "standard",
+})

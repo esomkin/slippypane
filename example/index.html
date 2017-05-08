@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>SlippyPane</title>
+    <link href="favicon.ico" rel="shortcut icon"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <!--
+    <link href="../build/slippypane.min.css" rel="stylesheet" type="text/css"/> 
+    -->
+    <link href="../src/slippypane/0.2.0/css/slippypane.css" rel="stylesheet" type="text/css"/> 
+    <link href="css/styles.css" rel="stylesheet" type="text/css"/> 
+</head>
+<body>
+
+    <main>
+        <div id="main" class="slippy-pane">
+            <aside>
+                Slippy from the left side
+            </aside>
+            <aside>
+                Slippy from the right side
+            </aside>
+        </div>
+
+        <div class="content">
+            <a href="/" class="btn btn-default slippy-handle" data-side="left" data-id="main">Open slippy from the left</a>
+            <a href="/" class="btn btn-default slippy-handle" data-side="right" data-id="main">Open slippy from the right</a>
+
+            <div class="container-inner">
+                <div id="inner" class="slippy-pane">
+                    <aside>
+                        Slippy inner from the left side
+                    </aside>
+                    <aside>
+                        Slippy inner from the right side
+                    </aside>
+                </div>
+                <div class="content">
+                    <a href="/" class="btn btn-default slippy-handle" data-side="left" data-id="inner">Open inner slippy from the left</a>
+                    <a href="/" class="btn btn-default slippy-handle" data-side="right" data-id="inner">Open inner slippy from the right</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!--
+    <script src="../build/slippypane.min.js"></script>
+    -->
+    <script src="../src/slippypane/0.2.0/jscript/slippypane.js"></script>
+    <script src="jscript/jscript.js"></script>
+</body>
+</html>

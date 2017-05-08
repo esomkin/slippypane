@@ -1,0 +1,5 @@
+({
+	baseUrl: "./",
+	name: "../src/slippypane/0.2.0/jscript/slippypane.js",
+	out: "slippypane.min.js",
+})
