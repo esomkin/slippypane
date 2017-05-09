@@ -73,7 +73,7 @@ THE SOFTWARE.
 		}
 	}
 
-	var _stack = {};
+	var _cache = {};
 	var _pane = null;
 
 	function _className (name) {
@@ -104,7 +104,7 @@ THE SOFTWARE.
 			var slippy = slippyArray[i];
 			var id = slippy.id;
 			
-			if (_stack.hasOwnProperty(id)) {
+			if (_cache.hasOwnProperty(id)) {
 
 				_pane = id;
 				continue;
@@ -141,16 +141,16 @@ THE SOFTWARE.
 
 			}.bind(this));
 
-			_stack[id] = slippy;
+			_cache[id] = slippy;
 			_pane = id;
 		}
 	}
 
 	function get (id) {
 
-		if (!_stack.hasOwnProperty(id)) {
+		if (!_cache.hasOwnProperty(id)) {
 
-			throw new Error('It seem`s element with id `' + id + '` does not present in stack');
+			throw new Error('It seem`s element with id `' + id + '` does not present in cache');
 		}
 
 		_pane = id;
@@ -160,7 +160,7 @@ THE SOFTWARE.
 
 	function open (side) {
 
-		var slippy = _stack[_pane];
+		var slippy = _cache[_pane];
 		var side = side || 'left';
 
 		document.body.classList.add('overflow');
@@ -171,7 +171,7 @@ THE SOFTWARE.
 
 	function close () {
 
-		var slippy = _stack[_pane];
+		var slippy = _cache[_pane];
 		var side = 'left';
 
 		if (slippy.classList.contains(_className('right'))) {
