@@ -78,7 +78,11 @@ THE SOFTWARE.
 	var _cache = {};
 	
 	var _pane = null;
-	var _call = null;
+	var _call = {
+
+		open: null,
+		close: null
+	};
 
 	function _className (name) {
 
@@ -137,18 +141,30 @@ THE SOFTWARE.
 
 				parent.classList.remove(_className('anim'));
 
+				if (parent.classList.contains(_className('open'))) {
+
+					if (_call.open) {
+
+						_call.open.call(this);
+
+						_call.open = null;
+					}
+				}
+
 				if (!parent.classList.contains(_className('open'))) {
 
 					var plane = parent.querySelector(_class('o'));
 					plane.classList.remove(_className('o'));
 
 					document.body.classList.remove('overflow');
-				}
 
-				if (_call) {
+					if (_call.close) {
 
-					_call.call(this);
-					_call = null;
+						_call.close.call(this);
+
+						_call.open = null;
+						_call.close = null;	
+					}
 				}
 
 			}.bind(this));
@@ -189,7 +205,18 @@ THE SOFTWARE.
 
 		if (callback) {
 
-			_call = callback;
+			var callOpen = callback.open || null;
+			var callClose = callback.close || null;
+
+			if (callOpen) {
+
+				_call.open = callOpen;
+			}
+
+			if (callClose) {
+
+				_call.close = callClose;
+			}
 		}
 
 		document.body.classList.add('overflow');
@@ -217,7 +244,12 @@ THE SOFTWARE.
 
 		if (callback) {
 
-			_call = callback;
+			var callClose = callback.close || null;
+
+			if (callClose) {
+
+				_call.close = callClose;
+			}
 		}
 
 		slippy.classList.add(_className('anim'));

@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 			var side = target.dataset.side;
 			var index = target.dataset.index;
 
-			SlippyPane(['#', id].join('')).open({ side: side, index: index, callback: function () { console.log('callback'); } });
+			SlippyPane(['#', id].join('')).open({ side: side, index: index, callback: { open: function () { console.log('Callback on open'); }, close: function () { console.log('Callback on close') } } });
 		}	
 	})
 
