@@ -111,13 +111,13 @@ THE SOFTWARE.
 			}
 
 			slippy.addEventListener('click', function (event) {
-
-				event.preventDefault();
 				
 				var target = event.target;
 
 				if (target.classList.contains(_className('pane'))
 					&& !target.classList.contains(_className('anim'))) {
+
+					event.preventDefault();
 
 					var id = target.id;
 
