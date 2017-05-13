@@ -19,11 +19,11 @@ main{
 
 }
 
-	.slippy-pane > aside:first-child{
+	.slippy-pane > aside.slippy-l{
 
 	}
 
-	.slippy-pane > aside:last-child{
+	.slippy-pane > aside.slippy-r{
 		width: 800px;
 	}
 

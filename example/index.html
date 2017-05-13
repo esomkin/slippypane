@@ -17,30 +17,34 @@
 
     <main>
         <div id="main" class="slippy-pane">
-            <aside>
+            <aside class="slippy-l">
                 Slippy from the left side
             </aside>
-            <aside>
+            <aside class="slippy-r">
                 Slippy from the right side
             </aside>
         </div>
 
         <div class="content">
-            <a href="/" class="btn btn-default slippy-handle" data-side="left" data-id="main">Open slippy from the left</a>
-            <a href="/" class="btn btn-default slippy-handle" data-side="right" data-id="main">Open slippy from the right</a>
+            <a href="/" class="btn btn-default slippy-handle" data-id="main" data-side="l">Open slippy from the left</a>
+            <a href="/" class="btn btn-default slippy-handle" data-id="main" data-side="r">Open slippy from the right</a>
 
             <div class="container-inner">
                 <div id="inner" class="slippy-pane">
-                    <aside>
+                    <aside class="slippy-l">
                         Slippy inner from the left side
                     </aside>
-                    <aside>
-                        Slippy inner from the right side
+                    <aside class="slippy-r">
+                        Slippy inner from the right side index 0
+                    </aside>
+                    <aside class="slippy-r">
+                        Slippy inner from the right side index 1
                     </aside>
                 </div>
                 <div class="content">
-                    <a href="/" class="btn btn-default slippy-handle" data-side="left" data-id="inner">Open inner slippy from the left</a>
-                    <a href="/" class="btn btn-default slippy-handle" data-side="right" data-id="inner">Open inner slippy from the right</a>
+                    <a href="/" class="btn btn-default slippy-handle" data-id="inner" data-side="l" data-index="0">Open inner slippy from the left</a>
+                    <a href="/" class="btn btn-default slippy-handle" data-id="inner" data-side="r" data-index="0">Open inner slippy from the right index 0</a>
+                    <a href="/" class="btn btn-default slippy-handle" data-id="inner" data-side="r" data-index="1">Open inner slippy from the right index 1</a>
                 </div>
             </div>
         </div>

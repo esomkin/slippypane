@@ -12,8 +12,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
 			var id = target.dataset.id;
 			var side = target.dataset.side;
+			var index = target.dataset.index;
 
-			SlippyPane(['#', id].join('')).open(side);
+			SlippyPane(['#', id].join('')).open({ side: side, index: index, callback: function () { console.log('callback'); } });
 		}	
 	})
 

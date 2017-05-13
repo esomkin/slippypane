@@ -68,13 +68,17 @@ THE SOFTWARE.
 
 			pane: 'pane',
 			anim: 'anim',
-			left: 'l',
-			right: 'r'
+			open: 'open',
+			l: 'l',
+			r: 'r',
+			o: 'o'
 		}
 	}
 
 	var _cache = {};
+	
 	var _pane = null;
+	var _call = null;
 
 	function _className (name) {
 
@@ -90,13 +94,13 @@ THE SOFTWARE.
 
 	function _init (selector) {
 
-		selector = selector || _class(_className('pane'));
+		selector = selector || _class('pane');
 
 		var slippyArray = document.querySelectorAll(selector);
 
 		if (!slippyArray) {
 
-			throw new Error('It seem`s element with selector `' + selector + '` does not present in DOM');
+			throw new Error('It seem`s element (selector `' + selector + '`) doesn`t present in DOM');
 		}
 
 		for (var i = 0, count = slippyArray.length; i < count; i ++) {
@@ -133,10 +137,18 @@ THE SOFTWARE.
 
 				parent.classList.remove(_className('anim'));
 
-				if (!parent.classList.contains(_className('left'))
-					&& !parent.classList.contains(_className('right'))) {
+				if (!parent.classList.contains(_className('open'))) {
+
+					var plane = parent.querySelector(_class('o'));
+					plane.classList.remove(_className('o'));
 
 					document.body.classList.remove('overflow');
+				}
+
+				if (_call) {
+
+					_call.call(this);
+					_call = null;
 				}
 
 			}.bind(this));
@@ -158,29 +170,58 @@ THE SOFTWARE.
 		return this;
 	}
 
-	function open (side) {
+	/*
+	* @options { index, callback }
+	* 
+	* side: side
+	* index: layer index
+	* callback: callback function
+	*/
+
+	function open (options) {
 
 		var slippy = _cache[_pane];
-		var side = side || 'left';
+
+		var options = options || {};
+		var side = options.side || 'l';
+		var index = options.index || 0;
+		var callback = options.callback || null;
+
+		if (callback) {
+
+			_call = callback;
+		}
 
 		document.body.classList.add('overflow');
-		slippy.classList.add(_className('anim'), _className(side));
+
+		var plane = slippy.querySelectorAll(_class(side))[index];
+		plane.classList.add(_className('o'));
+
+		slippy.classList.add(_className('anim'), _className('open'));
 		
 		return this;
 	}
 
-	function close () {
+	/*
+	* @options { callback }
+	* 
+	* callback: callback function
+	*/
+
+	function close (options) {
 
 		var slippy = _cache[_pane];
-		var side = 'left';
 
-		if (slippy.classList.contains(_className('right'))) {
+		var options = options || {};
+		var callback = options.callback || null;
 
-			side = 'right';
+		if (callback) {
+
+			_call = callback;
 		}
 
 		slippy.classList.add(_className('anim'));
-		slippy.classList.remove(_className(side));
+		slippy.classList.remove(_className('open'));
 
 		return this;
 	}
