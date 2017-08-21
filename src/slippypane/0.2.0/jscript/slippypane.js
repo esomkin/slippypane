@@ -112,7 +112,8 @@ THE SOFTWARE.
 			var slippy = slippyArray[i];
 			var id = slippy.id;
 			
-			if (_cache.hasOwnProperty(id)) {
+			if (_cache.hasOwnProperty(id)
+			   	&& slippy.isEqualNode(_cache[id])) {
 
 				_pane = id;
 				continue;
